@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+          background-image: url("https://realclobber.com/wp-content/uploads/2020/08/Seamless-Way-To-Track-Your-Finance-With-Expense-Tracking-Apps.jpg");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: 100% 100%;
+
+        }
+    </style>
+</head>
+<body>
+    <h1 text-align="center">Expense Tracker</h1>
+    <form action="{{ url_for('add_expense') }}" method="post">
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description"><br>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount"><br>
+        <button type="submit">Add Expense</button>
+    </form>
+    <h2>Expenses</h2>
+    <ul>
+        {% for expense in expenses %}
+        <li>{{ expense.description }} - ${{ expense.amount }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
